@@ -1,0 +1,26 @@
+from sympy import exp, symbols, diff
+
+x, t, v = symbols('x t v')
+
+f = 2 / (1+exp((x-t)/v))
+
+df_dx = diff(f,x)
+
+df_dt = diff(f,t)
+
+d2f_dx2 = diff(df_dx,x)
+
+print(df_dx)
+print(df_dt)
+print(d2f_dx2)
+print('')
+
+u = 2 / (1+exp((x-t)/v))
+
+du_dt = diff(u,t)
+
+equation = du_dt + u *df_dx - v * d2f_dx2
+
+simplified_equation = equation.simplify()
+
+print(f'De deriverte satt inn i Burgers likning gir likningen = {simplified_equation}')
